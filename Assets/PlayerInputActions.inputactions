@@ -88,10 +88,19 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Crouch",
+                    "type": "Value",
+                    "id": "5a082f4c-2a19-4fb6-be83-76706df3bfb6",
+                    "expectedControlType": "Digital",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Run",
                     "type": "Value",
-                    "id": "f676b417-3115-49ca-9122-2f99aa21a821",
-                    "expectedControlType": "",
+                    "id": "b591a53a-1268-43ea-8ce9-d1c866e6ce11",
+                    "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -210,8 +219,19 @@
                 },
                 {
                     "name": "",
-                    "id": "b45b086c-9afd-47be-9b95-7b5fe37c681f",
-                    "path": "",
+                    "id": "cec0dcea-a838-43e7-9572-28e950c600f4",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbcbc233-04e3-4d41-a7b4-7aa06c68c13a",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

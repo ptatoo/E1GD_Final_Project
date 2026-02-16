@@ -2894,10 +2894,26 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0e06b522-b119-4f01-9a6a-ff48a1e9be8c
+    m_ActionName: 'Day/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 19e4cefe-a789-40c1-a06b-fccdb4e8aa58
+    m_ActionName: 'Night/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5a082f4c-2a19-4fb6-be83-76706df3bfb6
+    m_ActionName: 'Night/Crouch[/Keyboard/c]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b591a53a-1268-43ea-8ce9-d1c866e6ce11
+    m_ActionName: 'Night/Run[/Keyboard/leftShift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Day
+  m_DefaultActionMap: Night
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &963912219
@@ -2913,7 +2929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   maxThreshold: 20
-  speed: 5
+  originalSpeed: 5
+  rotationSpeed: 30
 --- !u!4 &963912220
 Transform:
   m_ObjectHideFlags: 0

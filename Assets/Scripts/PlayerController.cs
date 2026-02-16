@@ -5,13 +5,16 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxThreshold; 
-    [SerializeField] private float speed;
+    [SerializeField] private float originalSpeed;
     [SerializeField] private float rotationSpeed;
+    private bool isCrouching = false;
+    private bool isRunning = false;
+    private float speed;
     private Vector2 inputDirection; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        speed = originalSpeed;
     }
 
     // Update is called once per frame
@@ -20,6 +23,19 @@ public class PlayerController : MonoBehaviour
         // Debug.Log($"inputDirection = {inputDirection}");
         //Vector2 dPos = GetTranslationVector(); 
         float angleZ = transform.eulerAngles.z;
+        if(isCrouching)
+        {
+            speed = originalSpeed / 2f;
+        }
+        else if(isRunning)
+        {
+            speed = originalSpeed * 2f;
+        }
+        else
+        {
+            speed = originalSpeed;
+        }
+
         //transform.Translate(dPos); 
         if (inputDirection.y > 0)
         {
@@ -62,16 +78,16 @@ public class PlayerController : MonoBehaviour
     {
         inputDirection = value.Get<Vector2>();
     }
-    bool checkCrouch()
+    private void OnCrouch(InputValue value)
     {
-
-        if (Input.GetKey(KeyCode.C))
-        {
-            return true;
-        }
-        else
-            return false;
+        isCrouching = value.isPressed;
+        Debug.Log($"isCrouching = {isCrouching}");
     }
-    
+
+    private void OnRun (InputValue value)
+    {
+        isRunning = value.isPressed;
+        Debug.Log($"isRunning = {isRunning}");
+    }
 
 }
