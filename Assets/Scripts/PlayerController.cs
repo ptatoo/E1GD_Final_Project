@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(isRunning)
         {
-            speed = originalSpeed * 2f;
+            speed = originalSpeed * 1.5f;
         }
         else
         {
