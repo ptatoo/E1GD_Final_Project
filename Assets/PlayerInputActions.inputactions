@@ -133,6 +133,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "6434fdd6-5541-4593-8b9f-ab726fb625be",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -275,7 +284,16 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Point",
+                    "action": "Point"
+		},
+		{
+		    "name": "",
+                    "id": "97a8e889-53cc-4353-91f8-acc3247cf03c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

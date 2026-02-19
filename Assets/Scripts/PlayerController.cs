@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
 
     private int SCREEN_WIDTH = Screen.width;
     private int SCREEN_HEIGHT = Screen.height;
+    int cash = 0;
+    [SerializeField] private float interactDistance;
+    [SerializeField] private LayerMask interactLayer;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         speed = originalSpeed;
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector2(transform.position.x + inputDirection.x * speed * Time.deltaTime, transform.position.y + inputDirection.y * speed * Time.deltaTime);
         float rotation = Mathf.Atan2(mousePos.y, mousePos.x);
         flashlight.transform.rotation = Quaternion.Euler(0, 0, rotation / Mathf.PI * 180 - 90);
-
+        Debug.DrawRay(transform.position, mousePos.normalized * interactDistance, Color.green); // for debugging in scene view
     }
 
     private Vector2 GetTranslationVector()
@@ -85,5 +90,17 @@ public class PlayerController : MonoBehaviour
         //calculates mouse Position relative to Player
         Vector2 temp = value.Get<Vector2>();
         mousePos = new Vector2(temp.x - SCREEN_WIDTH / 2, temp.y - SCREEN_HEIGHT / 2);
+    }
+
+    private void OnInteract(InputValue value)
+    {
+        Vector2 rayDirection = mousePos.normalized;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, interactDistance, interactLayer);
+        if (hit.collider != null && hit.collider.CompareTag("Interactable"))
+        {
+            hit.collider.gameObject.SetActive(false);
+            cash += 10;
+            Debug.Log("Cash: " + cash);
+        }
     }
 }
