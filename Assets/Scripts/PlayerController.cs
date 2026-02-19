@@ -7,11 +7,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxThreshold; 
     [SerializeField] private float originalSpeed;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] GameObject flashlight;
     private bool isCrouching = false;
     private bool isRunning = false;
     private float speed;
+
     private Vector2 inputDirection; 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Vector2 mousePos;
+
+    private int SCREEN_WIDTH = Screen.width;
+    private int SCREEN_HEIGHT = Screen.height;
     void Start()
     {
         speed = originalSpeed;
@@ -36,24 +41,9 @@ public class PlayerController : MonoBehaviour
             speed = originalSpeed;
         }
 
-        //transform.Translate(dPos); 
-        if (inputDirection.y > 0)
-        {
-            transform.position = new Vector2(transform.position.x + Mathf.Cos(angleZ * Mathf.PI / 180) * speed * Time.deltaTime, transform.position.y + Mathf.Sin(angleZ * Mathf.PI / 180) * speed * Time.deltaTime);
-        }
-        else if (inputDirection.y < 0)
-        {
-            transform.position = new Vector2(transform.position.x - Mathf.Cos(angleZ * Mathf.PI / 180) * speed * Time.deltaTime, transform.position.y - Mathf.Sin(angleZ * Mathf.PI / 180) * speed * Time.deltaTime);
-        }
-        if (inputDirection.x < 0)
-        {
-            transform.Rotate(new Vector3(0, 0,  rotationSpeed * Time.deltaTime));
-        }
-        else if (inputDirection.x > 0)
-        {
-            transform.Rotate(new Vector3(0, 0, - rotationSpeed * Time.deltaTime));
-        }
-
+        transform.position = new Vector2(transform.position.x + inputDirection.x * speed * Time.deltaTime, transform.position.y + inputDirection.y * speed * Time.deltaTime);
+        float rotation = Mathf.Atan2(mousePos.y, mousePos.x);
+        flashlight.transform.rotation = Quaternion.Euler(0, 0, rotation / Mathf.PI * 180 - 90);
 
     }
 
@@ -90,4 +80,10 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"isRunning = {isRunning}");
     }
 
+    private void OnPoint(InputValue value)
+    {
+        //calculates mouse Position relative to Player
+        Vector2 temp = value.Get<Vector2>();
+        mousePos = new Vector2(temp.x - SCREEN_WIDTH / 2, temp.y - SCREEN_HEIGHT / 2);
+    }
 }
