@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float interactDistance;
     [SerializeField] private LayerMask interactLayer;
 
+
+    [SerializeField] private NoiseTransmitter noiseTransmitter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,14 +40,22 @@ public class PlayerController : MonoBehaviour
         if(isCrouching)
         {
             speed = originalSpeed / 2f;
+            noiseTransmitter.SetNoiseLevel(1);
         }
         else if(isRunning)
         {
             speed = originalSpeed * 1.5f;
+            noiseTransmitter.SetNoiseLevel(4);
         }
         else
         {
             speed = originalSpeed;
+            noiseTransmitter.SetNoiseLevel(2);
+        }
+
+        if(inputDirection == Vector2.zero)
+        {
+            noiseTransmitter.SetNoiseLevel(0);
         }
 
         //move player
