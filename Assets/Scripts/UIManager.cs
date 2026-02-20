@@ -6,10 +6,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Light2D globalLight; 
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Light2D playerLight; 
 
     public void ChangePhase()
     {
         globalLight.intensity = 0.1f;
         spriteRenderer.enabled = true; 
+        playerLight.enabled = true; 
     }
 }
