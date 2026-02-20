@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
             speed = originalSpeed;
         }
 
+        //move player
         transform.position = new Vector2(transform.position.x + inputDirection.x * speed * Time.deltaTime, transform.position.y + inputDirection.y * speed * Time.deltaTime);
         float rotation = Mathf.Atan2(mousePos.y, mousePos.x);
         flashlight.transform.rotation = Quaternion.Euler(0, 0, rotation / Mathf.PI * 180 - 90);
@@ -96,11 +97,20 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 rayDirection = mousePos.normalized;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, interactDistance, interactLayer);
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
         if (hit.collider != null && hit.collider.CompareTag("Interactable"))
         {
             hit.collider.gameObject.SetActive(false);
             cash += 10;
             Debug.Log("Cash: " + cash);
+        }
+        else if (hit.collider != null && hit.collider.CompareTag("Door"))
+        {
+            Debug.Log("Door");
+            hit.collider.gameObject.transform.rotation = Quaternion.Euler(0, 0, hit.collider.gameObject.transform.rotation.z);
         }
     }
 }
