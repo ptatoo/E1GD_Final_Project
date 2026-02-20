@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
@@ -97,10 +98,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 rayDirection = mousePos.normalized;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, interactDistance, interactLayer);
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.collider.gameObject.name);
-        }
         if (hit.collider != null && hit.collider.CompareTag("Interactable"))
         {
             hit.collider.gameObject.SetActive(false);
@@ -110,7 +107,8 @@ public class PlayerController : MonoBehaviour
         else if (hit.collider != null && hit.collider.CompareTag("Door"))
         {
             Debug.Log("Door");
-            hit.collider.gameObject.transform.rotation = Quaternion.Euler(0, 0, hit.collider.gameObject.transform.rotation.z);
+            RotateDoor rotate = hit.collider.gameObject.GetComponent<RotateDoor>();
+            rotate.rotate();
         }
     }
 }
