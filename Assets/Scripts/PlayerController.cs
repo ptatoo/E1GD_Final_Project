@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private NoiseTransmitter noiseTransmitter;
+    [SerializeField] UIManager UIManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -112,7 +113,8 @@ public class PlayerController : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Interactable"))
         {
             hit.collider.gameObject.SetActive(false);
-            cash += 10;
+            cash += 100;
+            UIManager.UpdateCash(cash);
             Debug.Log("Cash: " + cash);
         }
         else if (hit.collider != null && hit.collider.CompareTag("Door"))
