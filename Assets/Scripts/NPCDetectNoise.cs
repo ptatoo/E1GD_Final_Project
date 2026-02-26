@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCDetectNoise : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class NPCDetectNoise : MonoBehaviour
 
     private float distance; 
 
-    private bool isReceiving; 
+    private bool isReceiving;
+
+    [SerializeField] UnityEvent OnNPCWakeUp;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -35,7 +38,7 @@ public class NPCDetectNoise : MonoBehaviour
         else if (alertness > 100)
         {
             alertness = 100f;
-            Debug.Log("ALEEEEERT");
+            OnNPCWakeUp.Invoke(); 
         }
 
         Debug.Log(alertness);

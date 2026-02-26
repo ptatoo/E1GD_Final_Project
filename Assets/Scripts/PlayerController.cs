@@ -115,11 +115,11 @@ public class PlayerController : MonoBehaviour
             hit.collider.gameObject.SetActive(false);
             cash += 100;
             UIManager.UpdateCash(cash);
-            Debug.Log("Cash: " + cash);
+            //Debug.Log("Cash: " + cash);
         }
         else if (hit.collider != null && hit.collider.CompareTag("Door"))
         {
-            Debug.Log("Door");
+            //Debug.Log("Door");
             RotateDoor rotate = hit.collider.gameObject.GetComponent<RotateDoor>();
             rotate.rotate();
         }
