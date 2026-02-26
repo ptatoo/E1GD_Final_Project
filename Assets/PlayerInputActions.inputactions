@@ -284,10 +284,12 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Point"
-		},
-		{
-		    "name": "",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "97a8e889-53cc-4353-91f8-acc3247cf03c",
                     "path": "<Keyboard>/e",
                     "interactions": "",
