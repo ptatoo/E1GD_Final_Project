@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class NPCDetectNoise : MonoBehaviour
 {
-    private float alertness;
+    public float alertness;
 
     private float totalNoise;
     private float noiseReceived;
