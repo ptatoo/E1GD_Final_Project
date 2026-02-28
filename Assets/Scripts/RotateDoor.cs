@@ -21,7 +21,6 @@ public class RotateDoor : MonoBehaviour
 
     public void rotate()
     {
-        //Debug.Log("TRYING TO ROTATE");
         if (isOpen && isRotation == false) { 
             isRotation = true;
             isOpen = false; 

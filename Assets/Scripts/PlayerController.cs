@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (hit.collider != null && hit.collider.CompareTag("Door"))
         {
-            //Debug.Log("Door");
             RotateDoor rotate = hit.collider.gameObject.GetComponent<RotateDoor>();
             rotate.rotate();
         }

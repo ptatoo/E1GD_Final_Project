@@ -22,7 +22,6 @@ public class NoiseTransmitter : MonoBehaviour
     {
         if(playerInput.currentActionMap.name == "Night")
         {
-            //Debug.Log(noiseLevel);    
             OnNoise?.Invoke(noiseLevel, new Vector2(playerTransform.position.x, playerTransform.position.y));
         }
     }

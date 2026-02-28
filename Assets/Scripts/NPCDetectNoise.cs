@@ -41,12 +41,12 @@ public class NPCDetectNoise : MonoBehaviour
             OnNPCWakeUp.Invoke(); 
         }
 
-        Debug.Log(alertness);
+        //Debug.Log(alertness);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ENTER");
+        //Debug.Log("ENTER");
         var tx = collision.GetComponent<NoiseTransmitter>();
 
         if (tx == null) return;
@@ -57,7 +57,7 @@ public class NPCDetectNoise : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("EXIT");
+        //Debug.Log("EXIT");
         var tx = collision.GetComponent <NoiseTransmitter>();
 
         if (tx == null) return;
