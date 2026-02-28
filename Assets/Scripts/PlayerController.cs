@@ -41,17 +41,17 @@ public class PlayerController : MonoBehaviour
         if(isCrouching)
         {
             speed = originalSpeed / 2f;
-            noiseTransmitter.SetNoiseLevel(1);
+            noiseTransmitter.SetNoiseLevel(3);
         }
         else if(isRunning)
         {
             speed = originalSpeed * 1.5f;
-            noiseTransmitter.SetNoiseLevel(4);
+            noiseTransmitter.SetNoiseLevel(15);
         }
         else
         {
             speed = originalSpeed;
-            noiseTransmitter.SetNoiseLevel(2);
+            noiseTransmitter.SetNoiseLevel(6);
         }
 
         if(inputDirection == Vector2.zero)

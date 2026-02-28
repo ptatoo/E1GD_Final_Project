@@ -1,24 +1,28 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class NPCDetectNoise : MonoBehaviour
 {
-    private float alertness;
+    public float alertness;
 
     private float totalNoise;
     private float noiseReceived;
     [SerializeField] private float noiseLost;
+    [Range(0, 1)] private float noiseDetectionRatio;
 
     private float distance; 
 
     private bool isReceiving;
 
     [SerializeField] UnityEvent OnNPCWakeUp;
+    
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        alertness = 0; 
+        alertness = 0;
+        noiseDetectionRatio = 1f; 
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class NPCDetectNoise : MonoBehaviour
         }
         totalNoise = noiseReceived + noiseLost;
         //Debug.Log(totalNoise); 
-        alertness += totalNoise / (distance * distance) * Time.deltaTime;
+        alertness += 10 * totalNoise / (distance) * Time.deltaTime;
 
         if (alertness < 0) alertness = 0f;
         else if (alertness > 100)
@@ -75,4 +79,11 @@ public class NPCDetectNoise : MonoBehaviour
 
         //if (alertness > 100) alertness = 100f; 
     }
+
+
+    public void FireOnNPCWakeUp()
+    {
+        OnNPCWakeUp.Invoke(); 
+    }
+    
 }
