@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        Debug.Log("Game Over!!!!"); 
+    }
+
     IEnumerator DayPhaseCoroutine (int phase)
     {
         StartDayTimer();

@@ -8,10 +8,14 @@ public class Controller_AI : MonoBehaviour
     [SerializeField] Transform dest2;
     [SerializeField] Transform playerPos;
     [SerializeField] UnityEvent onNpnWakeUP;
+
+    [SerializeField] UnityEvent onGameEnd;
+
     bool npcWakeUp = false;
 
     [SerializeField] Vector3 lastPosition;
     [SerializeField] Transform visionTransform;
+    [SerializeField] float gameOverDistance;
 
 
 
@@ -64,10 +68,18 @@ public class Controller_AI : MonoBehaviour
 
 
 
-            Debug.Log("Distance from d1: " + (transform.position - dest1.position).magnitude);
-                Debug.Log("Distance from d2: "+(transform.position - dest2.position).magnitude);
+        Debug.Log("Distance from d1: " + (transform.position - dest1.position).magnitude);
+        Debug.Log("Distance from d2: " + (transform.position - dest2.position).magnitude);
         if (npcWakeUp)
+        {
             ai.destination = playerPos.position;
+            float distance = Vector3.Distance(playerPos.position, transform.position);
+
+            if(distance <= gameOverDistance)
+            {
+                onGameEnd.Invoke();
+            }
+        }
         else
         {
             Debug.Log("CHECKIIINGGG");
