@@ -68,8 +68,8 @@ public class Controller_AI : MonoBehaviour
 
 
 
-        Debug.Log("Distance from d1: " + (transform.position - dest1.position).magnitude);
-        Debug.Log("Distance from d2: " + (transform.position - dest2.position).magnitude);
+        //Debug.Log("Distance from d1: " + (transform.position - dest1.position).magnitude);
+        //Debug.Log("Distance from d2: " + (transform.position - dest2.position).magnitude);
         if (npcWakeUp)
         {
             ai.destination = playerPos.position;
@@ -82,12 +82,12 @@ public class Controller_AI : MonoBehaviour
         }
         else
         {
-            Debug.Log("CHECKIIINGGG");
+            //Debug.Log("CHECKIIINGGG");
 
             if ((transform.position - dest2.position).magnitude < 0.6f)
             {
                 ai.destination = dest1.position;
-                Debug.Log((transform.position - dest2.position).magnitude);
+                //Debug.Log((transform.position - dest2.position).magnitude);
             }
             else if ((transform.position - dest1.position).magnitude < 0.6f)
             {

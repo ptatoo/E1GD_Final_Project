@@ -14,10 +14,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI phaseText;
     [SerializeField] GameObject noiseLevelBarBackground;
     [SerializeField] GameObject noiseLevelBarForeground;
+    private int m_cash = 0;
 
     public void UpdateCash(int cash)
     {
         cashText.text = "Total Cash: $" + cash;
+    }
+
+    public void addCash(int cash)
+    {
+        m_cash += cash;
+        UpdateCash(m_cash);
     }
 
     public void UpdateDayTimer(string time)

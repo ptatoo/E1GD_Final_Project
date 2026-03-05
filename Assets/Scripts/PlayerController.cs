@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
     private int SCREEN_WIDTH = Screen.width;
     private int SCREEN_HEIGHT = Screen.height;
-    int cash = 0;
     [SerializeField] private float interactDistance;
     [SerializeField] private LayerMask interactLayer;
 
@@ -113,9 +112,11 @@ public class PlayerController : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Interactable"))
         {
             hit.collider.gameObject.SetActive(false);
-            cash += 100;
-            UIManager.UpdateCash(cash);
-            //Debug.Log("Cash: " + cash);
+            try
+            {
+                UIManager.addCash(hit.collider.gameObject.GetComponent<CoinScript>().getCash());
+            }
+            catch { UIManager.addCash(100); }
         }
         else if (hit.collider != null && hit.collider.CompareTag("Door"))
         {

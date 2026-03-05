@@ -19,8 +19,10 @@ public class RotateDoor : MonoBehaviour
         
     }
 
+
     public void rotate()
     {
+
         if (isOpen && isRotation == false) { 
             isRotation = true;
             isOpen = false; 
