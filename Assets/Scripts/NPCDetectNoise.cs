@@ -47,7 +47,7 @@ public class NPCDetectNoise : MonoBehaviour
         {
             totalNoise = noiseReceived + noiseLost;
             //Debug.Log(totalNoise); 
-            alertness += 10 * totalNoise / (distance) * Time.deltaTime;     
+            alertness += 10 * totalNoise / (distance) * Time.deltaTime;        
 
             if (alertness < 0) alertness = 0f;
             else if (alertness > 100)
