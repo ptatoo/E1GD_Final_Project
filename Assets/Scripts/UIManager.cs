@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using TMPro;
 
@@ -11,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI cashText;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI phaseText;
+    [SerializeField] GameObject noiseLevelBarBackground;
+    [SerializeField] GameObject noiseLevelBarForeground;
 
     public void UpdateCash(int cash)
     {
@@ -26,7 +29,17 @@ public class UIManager : MonoBehaviour
     {
         timerText.text = "Time Elapsed: " + time;
     }
+
+    public void UpdateNoiseLevelSliderValue(float noiseLevel)
+    {
+        noiseLevelBarForeground.transform.localScale = new Vector3(noiseLevel/100f, 1, 1);
+    }
     
+    public void UpdateNoiseLevelSliderPosition(Vector3 position)
+    {
+        noiseLevelBarBackground.transform.position = position;
+    }
+
     public void ChangePhase()
     {
         globalLight.intensity = 0.0f;

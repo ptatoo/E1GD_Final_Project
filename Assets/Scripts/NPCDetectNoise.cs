@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class NPCDetectNoise : MonoBehaviour
 {
     public float alertness;
-
+    private bool npcWokeUp;
     private float totalNoise;
     private float noiseReceived;
     [SerializeField] private float noiseLost;
@@ -16,13 +16,14 @@ public class NPCDetectNoise : MonoBehaviour
     private bool isReceiving;
 
     [SerializeField] UnityEvent OnNPCWakeUp;
-    
+    [SerializeField] UIManager UIManager;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         alertness = 0;
         noiseDetectionRatio = 1f; 
+        npcWokeUp = false;
     }
 
     // Update is called once per frame
@@ -36,14 +37,28 @@ public class NPCDetectNoise : MonoBehaviour
         }
         totalNoise = noiseReceived + noiseLost;
         //Debug.Log(totalNoise); 
-        alertness += 10 * totalNoise / (distance) * Time.deltaTime;
+        //alertness += 10 * totalNoise / (distance) * Time.deltaTime;
 
-        if (alertness < 0) alertness = 0f;
-        else if (alertness > 100)
+        if (npcWokeUp)
         {
-            alertness = 100f;
-            OnNPCWakeUp.Invoke(); 
+
         }
+        else
+        {
+            totalNoise = noiseReceived + noiseLost;
+            //Debug.Log(totalNoise); 
+            alertness += 100 * totalNoise / (distance * distance) * Time.deltaTime;        
+
+            if (alertness < 0) alertness = 0f;
+            else if (alertness > 100)
+            {
+                alertness = 100f;
+                OnNPCWakeUp.Invoke(); 
+                npcWokeUp = true;
+            }
+            UIManager.UpdateNoiseLevelSliderValue(alertness);
+        }
+        UIManager.UpdateNoiseLevelSliderPosition(transform.position + new Vector3(0, 1f, 0));
 
         //Debug.Log(alertness);
     }
