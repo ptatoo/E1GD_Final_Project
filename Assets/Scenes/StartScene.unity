@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5168e908e0ab4ab1b08cc8d6b3542fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  sceneToLoad: Oliver_UI
+  sceneToLoad: Main
 --- !u!114 &421070228
 MonoBehaviour:
   m_ObjectHideFlags: 0
