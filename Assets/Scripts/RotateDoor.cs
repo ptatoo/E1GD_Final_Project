@@ -5,9 +5,11 @@ public class RotateDoor : MonoBehaviour
 {
     private bool isOpen = false;
     private bool isRotation = false;
+    private bool canOpen = true;
     private float interp = 0f;
     private Vector3 initRotation;
     [SerializeField] private string rotationDirection = "counter-clockwise";
+    
     void Start()
     {
         initRotation = transform.rotation.eulerAngles;
@@ -20,8 +22,25 @@ public class RotateDoor : MonoBehaviour
     }
 
 
+    public void SetIsOpen(bool isOpen)
+    {
+        this.isOpen = isOpen;
+    }
+
+    public bool GetIsOpen()
+    {
+        return isOpen;
+    }
+
+    public void SetCanOpen(bool canOpen)
+    {
+        this.canOpen = canOpen;
+    }
+
+
     public void rotate()
     {
+        if (!canOpen) return;
 
         if (isOpen && isRotation == false) { 
             isRotation = true;

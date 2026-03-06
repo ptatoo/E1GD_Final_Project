@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int gamePhase; //0 day, 1 night
     [SerializeField] private UnityEvent phaseChangeEvent; 
-    [SerializeField] private PlayerInput playerInput; 
-
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private GameObject player;
     [SerializeField] UIManager UIManager;
     private int dayTimeLength = 5;
     private float timeRemainingDay;
@@ -79,6 +79,10 @@ public class GameManager : MonoBehaviour
         }
         phaseChangeEvent.Invoke(); 
         playerInput.SwitchCurrentActionMap("Night");
+
+        var playerCollider = player.GetComponent<BoxCollider2D>();
+        playerCollider.enabled = true;
+
         StopDayTimer();
         StartNightTimer();
     }

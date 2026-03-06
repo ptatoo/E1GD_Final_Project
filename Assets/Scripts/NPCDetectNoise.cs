@@ -15,7 +15,7 @@ public class NPCDetectNoise : MonoBehaviour
 
     private bool isReceiving;
 
-    [SerializeField] UnityEvent OnNPCWakeUp;
+    [SerializeField] private UnityEvent OnNPCWakeUp;
     [SerializeField] UIManager UIManager;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
