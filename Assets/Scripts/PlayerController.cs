@@ -135,9 +135,9 @@ public class PlayerController : MonoBehaviour
             hit.collider.gameObject.SetActive(false);
             try
             {
-                UIManager.addCash(hit.collider.gameObject.GetComponent<CoinScript>().getCash());
+                UIManager.AddCash(hit.collider.gameObject.GetComponent<CoinScript>().getCash());
             }
-            catch { UIManager.addCash(100); }
+            catch { UIManager.AddCash(100); }
         }
         else if (hit.collider != null && hit.collider.CompareTag("Door"))
         {

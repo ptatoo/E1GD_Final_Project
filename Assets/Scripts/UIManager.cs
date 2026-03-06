@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Light2D globalLight; 
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Light2D playerLight; 
+    [SerializeField] private Light2D playerLight;
+    [SerializeField] private Collider2D playerCollider;
     [SerializeField] TextMeshProUGUI cashText;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI phaseText;
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
         cashText.text = "Total Cash: $" + cash;
     }
 
-    public void addCash(int cash)
+    public void AddCash(int cash)
     {
         m_cash += cash;
         UpdateCash(m_cash);
@@ -53,5 +54,6 @@ public class UIManager : MonoBehaviour
         spriteRenderer.enabled = true; 
         playerLight.enabled = true;
         phaseText.text = "Robbing Phase";
+        playerCollider.enabled = true;
     }
 }
