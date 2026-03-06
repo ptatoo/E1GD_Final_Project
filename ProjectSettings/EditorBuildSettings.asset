@@ -6,17 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/AlexScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 3361d91ff898de44595bf3c797d92641
   - enabled: 1
-    path: Assets/Scenes/Oliver_UI.unity
-    guid: 1c5f5ae2b4e4d46238b4ab2769265170
-  - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: dd2fb20460eefe246ab979fe8e1dd0bd
+  - enabled: 1
+    path: Assets/Scenes/LevelSelectScene.unity
+    guid: 2b0de1e1ad71a4fea8b720d91486255f
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: df9f3366d95ff45e38081df10b1d036c
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 270ee82204c4a4492b00af518fc95bc9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

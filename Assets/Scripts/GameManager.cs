@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int gamePhase; //0 day, 1 night
     [SerializeField] private UnityEvent phaseChangeEvent; 
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerInput playerInput; 
     [SerializeField] private GameObject player;
+    [SerializeField] Transform playerStartPos;
+
     [SerializeField] UIManager UIManager;
     private int dayTimeLength = 5;
     private float timeRemainingDay;
@@ -84,6 +86,7 @@ public class GameManager : MonoBehaviour
         playerCollider.enabled = true;
 
         StopDayTimer();
+        player.transform.position = playerStartPos.position;
         StartNightTimer();
     }
 
