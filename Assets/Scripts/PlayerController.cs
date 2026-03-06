@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
     private float speed;
 
+    private Animator animator;
+    public GameObject playerCostume;
+
     private Vector2 inputDirection; 
     private Vector2 mousePos;
 
@@ -20,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private int SCREEN_HEIGHT = Screen.height;
     [SerializeField] private float interactDistance;
     [SerializeField] private LayerMask interactLayer;
-
+    
 
     [SerializeField] private NoiseTransmitter noiseTransmitter;
     [SerializeField] UIManager UIManager;
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         speed = originalSpeed;
+        animator = playerCostume.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,23 @@ public class PlayerController : MonoBehaviour
         if(inputDirection == Vector2.zero)
         {
             noiseTransmitter.SetNoiseLevel(0);
+        }
+
+        //animation transitions
+        if ((inputDirection.x != 0 || inputDirection.y != 0) && !isCrouching)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else animator.SetBool("isRunning", false);
+
+        //flip player
+        if (inputDirection.x > 0)
+        {
+            playerCostume.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (inputDirection.x < 0)
+        {
+            playerCostume.transform.localScale = new Vector3(-1, 1, 1);
         }
 
         //move player
