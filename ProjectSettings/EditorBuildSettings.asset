@@ -35,6 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arman/Finalizing/Arman_LevelSelectScene.unity
     guid: 844c0c0dad262ca478bc75607c213147
+  - enabled: 1
+    path: Assets/Scenes/AlexSceneLevel2.unity
+    guid: b4281e3d131779c4e9cae649c31de887
+  - enabled: 1
+    path: Assets/Scenes/Oliver_Level1.unity
+    guid: 11025be92b6d74317a670723db139c62
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

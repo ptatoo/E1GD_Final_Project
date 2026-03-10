@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine.Events;
 using UnityEngine.InputSystem; 
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -105,25 +106,26 @@ public class GameManager : MonoBehaviour
         {
             enteredHouse = false;
             Debug.Log("exit house");
+            SceneTransitionManager.Instance.LoadScene("VictoryScene");
         }
     }
 
     IEnumerator DayPhaseCoroutine (int phase)
     {
         StartDayTimer();
-        for(int i = 0; i < dayTimeLength; i++)
-        {
-            yield return new WaitForSeconds(1.0f); 
-        }
+        yield return new WaitForSeconds(dayTimeLength);
+        StopDayTimer();
+        yield return StartCoroutine(SceneTransitionManager.Instance.FadeOut());
+        yield return new WaitForSeconds(2);
         phaseChangeEvent.Invoke(); 
         playerInput.SwitchCurrentActionMap("Night");
 
         var playerCollider = player.GetComponent<BoxCollider2D>();
         playerCollider.enabled = true;
 
-        StopDayTimer();
         player.transform.position = playerStartPos.position;
         StartNightTimer();
+        yield return StartCoroutine(SceneTransitionManager.Instance.FadeIn());
     }
 
     IEnumerator UpdateNightTimerRoutine ()

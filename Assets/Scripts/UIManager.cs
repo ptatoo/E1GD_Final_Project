@@ -15,10 +15,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI phaseText;
     [SerializeField] GameObject noiseLevelBarBackground;
     [SerializeField] GameObject noiseLevelBarForeground;
-    private int m_cash = 0;
+    public static int m_cash = 0;
+    public static string m_time = "0:00";
 
-
-
+    void Awake()
+    {
+        m_cash = 0;
+    }
 
     public void UpdateCash(int cash)
     {
@@ -38,6 +41,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateNightTimer(string time)
     {
+        m_time = time;
         timerText.text = "Time Elapsed: " + time;
     }
 

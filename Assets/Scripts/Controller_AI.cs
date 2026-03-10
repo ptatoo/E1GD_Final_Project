@@ -17,7 +17,7 @@ public class Controller_AI : MonoBehaviour
     [SerializeField] Transform visionTransform;
     [SerializeField] float gameOverDistance;
 
-
+    private bool gameEnded = false;
 
     AILerp ai;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -75,8 +75,9 @@ public class Controller_AI : MonoBehaviour
             ai.destination = playerPos.position;
             float distance = Vector3.Distance(playerPos.position, transform.position);
 
-            if(distance <= gameOverDistance)
+            if(distance <= gameOverDistance && !gameEnded)
             {
+                gameEnded = true;
                 onGameEnd.Invoke();
             }
         }
