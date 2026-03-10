@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     private Coroutine timerDayCoroutine;
     private Coroutine timerNightCoroutine;
 
+    //detect the player entering and leaving the house
+    private bool enter = false;
+    private bool exit = false;
+    private bool enteredHouse = false;
     void Awake()
     {
         StartCoroutine(DayPhaseCoroutine(gamePhase)); 
@@ -70,6 +74,38 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over!!!!"); 
+    }
+
+    public void enterHouseUpdate(bool trigger)
+    {
+        if (isNightTimerRunning)
+        {
+            enter = trigger;
+            playerPosUpdate();
+        }
+    }
+
+    public void exitHouseUpdate(bool trigger)
+    {
+        if (isNightTimerRunning)
+        {
+            exit = trigger;
+            playerPosUpdate();
+        }
+    }
+
+    public void playerPosUpdate()
+    {
+        if (enter && !exit)
+        {
+            enteredHouse = true;
+            Debug.Log("entered house");
+        }
+        if (exit && enteredHouse && !enter)
+        {
+            enteredHouse = false;
+            Debug.Log("exit house");
+        }
     }
 
     IEnumerator DayPhaseCoroutine (int phase)

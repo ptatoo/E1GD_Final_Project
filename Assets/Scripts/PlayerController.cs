@@ -13,18 +13,24 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
     private float speed;
 
+    //controlling the player sprite renderer
     private Animator animator;
     public GameObject playerCostume;
 
+    //inputs
     private Vector2 inputDirection; 
     private Vector2 mousePos;
+
+    //entering and exiting the home
+    [SerializeField] private Collider2D inHouse;
+    [SerializeField] private Collider2D outsideHouse;
+    private bool inside = false;
 
     private int SCREEN_WIDTH = Screen.width;
     private int SCREEN_HEIGHT = Screen.height;
     [SerializeField] private float interactDistance;
     [SerializeField] private LayerMask interactLayer;
     
-
     [SerializeField] private NoiseTransmitter noiseTransmitter;
     [SerializeField] UIManager UIManager;
 
@@ -64,9 +70,7 @@ public class PlayerController : MonoBehaviour
 
         //animation transitions
         if ((inputDirection.x != 0 || inputDirection.y != 0) && !isCrouching)
-        {
             animator.SetBool("isRunning", true);
-        }
         else animator.SetBool("isRunning", false);
 
         //flip player
