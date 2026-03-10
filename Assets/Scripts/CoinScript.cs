@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] int cash = 100;
+    [SerializeField] AudioClip coinClip; 
 
     private SpriteRenderer spriteRenderer;
 
@@ -33,6 +35,11 @@ public class CoinScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDisable()
+    {
+        SFXManager.Instance.PlaySFX(coinClip);
     }
 
     public int getCash() { return cash; }

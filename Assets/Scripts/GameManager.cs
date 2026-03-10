@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform playerStartPos;
 
     [SerializeField] UIManager UIManager;
-    private int dayTimeLength = 5;
+    [SerializeField] private int dayTimeLength = 5;
     private float timeRemainingDay;
     private float elapsedTimeNight;
     private bool isDayTimerRunning = false;

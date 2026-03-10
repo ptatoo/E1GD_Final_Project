@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject noiseLevelBarForeground;
     private int m_cash = 0;
 
+
+
+
     public void UpdateCash(int cash)
     {
         cashText.text = "Total Cash: $" + cash;

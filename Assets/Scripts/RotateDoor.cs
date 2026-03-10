@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RotateDoor : MonoBehaviour
 {
@@ -9,19 +10,13 @@ public class RotateDoor : MonoBehaviour
     private float interp = 0f;
     private Vector3 initRotation;
     [SerializeField] private string rotationDirection = "counter-clockwise";
-    
+
+    [SerializeField] private AudioClip doorClip; 
     void Start()
     {
         initRotation = transform.rotation.eulerAngles;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    
     public void SetIsOpen(bool isOpen)
     {
         this.isOpen = isOpen;
@@ -53,6 +48,8 @@ public class RotateDoor : MonoBehaviour
             isOpen = true;  
             StartCoroutine(CloseDoor()); 
         }
+
+        SFXManager.Instance.PlaySFX(doorClip);
     }
 
     IEnumerator OpenDoor()

@@ -20,6 +20,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VictoryScene.unity
     guid: 270ee82204c4a4492b00af518fc95bc9
+  - enabled: 1
+    path: Assets/Scenes/Arman/Finalizing/Arman_GameOverScene.unity
+    guid: 81a58c5be5b9cd249897f5765690b256
+  - enabled: 1
+    path: Assets/Scenes/Arman/Finalizing/Arman_Main.unity
+    guid: 87480c102bb174849a69d1ab96d31f26
+  - enabled: 1
+    path: Assets/Scenes/Arman/Finalizing/Arman_StartScene.unity
+    guid: a722d03a1419f8342a13d2184556ea02
+  - enabled: 1
+    path: Assets/Scenes/Arman/Finalizing/Arman_VictoryScene.unity
+    guid: 176bd0a65d99be447afad673c30e1d4c
+  - enabled: 1
+    path: Assets/Scenes/Arman/Finalizing/Arman_LevelSelectScene.unity
+    guid: 844c0c0dad262ca478bc75607c213147
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

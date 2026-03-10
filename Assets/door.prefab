@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
   m_ShadowGroup: 0
-  m_Priority: 0
+  m_Priority: 5
   m_ComponentVersion: 5
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_PreviousTrimEdge: 0.01
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
-  m_PreviousShadowShape2DSource: {fileID: 8623566619283735429}
+  m_PreviousShadowShape2DSource: {fileID: 3537397641564554497}
   references:
     version: 2
     RefIds:
@@ -234,3 +234,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rotationDirection: counter-clockwise
+  doorClip: {fileID: 8300000, guid: e73cdbdf2f72baa4b952b163b67c4d7c, type: 3}
