@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private NoiseTransmitter noiseTransmitter;
     [SerializeField] UIManager UIManager;
+    [SerializeField] private UnityEvent OnGamePause;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -148,5 +149,10 @@ public class PlayerController : MonoBehaviour
             RotateDoor rotate = hit.collider.gameObject.GetComponent<RotateDoor>();
             rotate.rotate();
         }
+    }
+
+    private void OnPause(InputValue value)
+    {
+        OnGamePause.Invoke(); 
     }
 }

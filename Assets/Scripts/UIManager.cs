@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI phaseText;
     [SerializeField] GameObject noiseLevelBarBackground;
     [SerializeField] GameObject noiseLevelBarForeground;
+    [SerializeField] private GameObject pausePanel;
+    private bool isPausedGame = false; 
     public static int m_cash = 0;
     public static string m_time = "0:00";
 
@@ -62,5 +64,19 @@ public class UIManager : MonoBehaviour
         playerLight.enabled = true;
         phaseText.text = "Robbing Phase";
         playerCollider.enabled = true;
+    }
+
+    public void PauseGame()
+    {
+        isPausedGame = !isPausedGame;
+        pausePanel.SetActive(isPausedGame);
+
+        if(isPausedGame)
+        {
+            Time.timeScale = 0f;
+        } else
+        {
+            Time.timeScale = 1f; 
+        }
     }
 }
